@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ルーキークリエイター向け売上基準達成ボーナスタスク（エージェンシー用）</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Noto Sans JP', sans-serif; background: #f5f5f3; color: #1a1a1a; }
+.wrap { padding: 1rem; max-width: 480px; margin: 0 auto; }
+.page { display: none; }
+.page.active { display: block; }
+.nav-tabs { display: flex; gap: 4px; margin-bottom: 1.25rem; flex-wrap: wrap; }
+.tab-btn { flex: 1; min-width: 70px; padding: 6px 4px; font-size: 11px; font-weight: 500; border: 0.5px solid #ccc; border-radius: 8px; background: #e8e8e6; color: #666; cursor: pointer; text-align: center; transition: all 0.15s; }
+.tab-btn.active { background: #fff; border-color: #999; color: #1a1a1a; }
+.section-title { font-size: 14px; font-weight: 500; color: #1a1a1a; margin: 1.25rem 0 0.75rem; border-left: 3px solid #D85A30; padding-left: 8px; }
+.card { background: #fff; border: 0.5px solid #ddd; border-radius: 12px; padding: 1rem; margin-bottom: 0.75rem; }
+.card-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 0.5px solid #eee; font-size: 13px; }
+.card-row:last-child { border-bottom: none; }
+.card-label { color: #666; }
+.card-val { font-weight: 500; color: #1a1a1a; }
+.card-val.accent { color: #D85A30; }
+.badge { display: inline-block; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 999px; }
+.badge-red { background: #FAECE7; color: #993C1D; }
+.badge-blue { background: #E6F1FB; color: #185FA5; }
+.badge-amber { background: #FAEEDA; color: #854F0B; }
+.info-box { background: #f0ede8; border-radius: 8px; padding: 0.75rem 1rem; font-size: 12px; color: #555; margin-bottom: 0.75rem; line-height: 1.6; }
+.info-box strong { color: #1a1a1a; font-weight: 500; }
+.milestone-card { background: #fff; border: 0.5px solid #ddd; border-radius: 12px; padding: 1rem; margin-bottom: 0.75rem; }
+.milestone-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.milestone-name { font-size: 14px; font-weight: 500; }
+.milestone-diamonds { font-size: 12px; color: #666; margin-bottom: 8px; }
+.milestone-amounts { display: flex; gap: 8px; }
+.amount-box { flex: 1; background: #f5f5f3; border-radius: 8px; padding: 6px 8px; text-align: center; }
+.amount-label { font-size: 10px; color: #888; margin-bottom: 2px; }
+.amount-val { font-size: 14px; font-weight: 500; color: #D85A30; }
+.lv-selector { display: flex; gap: 6px; margin-bottom: 1rem; flex-wrap: wrap; }
+.lv-btn { padding: 5px 12px; font-size: 12px; font-weight: 500; border: 0.5px solid #ccc; border-radius: 999px; background: #f0ede8; color: #666; cursor: pointer; transition: all 0.15s; }
+.lv-btn.active { background: #D85A30; border-color: #D85A30; color: #fff; }
+.condition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 1rem; }
+.cond-box { background: #f5f5f3; border-radius: 8px; padding: 8px 10px; }
+.cond-label { font-size: 10px; color: #888; margin-bottom: 2px; }
+.cond-val { font-size: 13px; font-weight: 500; color: #1a1a1a; }
+.diamond-input { display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
+.diamond-input input { flex: 1; padding: 8px 12px; font-size: 14px; border: 0.5px solid #ccc; border-radius: 8px; background: #fff; color: #1a1a1a; outline: none; }
+.diamond-input input:focus { border-color: #D85A30; }
+.result-big { font-size: 18px; font-weight: 500; color: #D85A30; }
+.rev-lv-card { background: #fff; border: 0.5px solid #ddd; border-radius: 12px; padding: 0.75rem 1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 12px; }
+.rev-lv-badge { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; flex-shrink: 0; }
+.rev-info { flex: 1; }
+.rev-cond { font-size: 12px; color: #666; }
+.rev-rate { font-size: 15px; font-weight: 500; color: #1a1a1a; }
+.note { font-size: 11px; color: #888; line-height: 1.5; padding: 6px 0; }
+h1 { font-size: 15px; font-weight: 500; color: #1a1a1a; margin-bottom: 0.25rem; padding: 1rem 0 0.5rem; }
+.subtitle { font-size: 11px; color: #888; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>ルーキークリエイター向け売上基準達成ボーナスタスク（エージェンシー用）</h1>
+<p class="subtitle">TikTokライブ配信 報酬制度ガイド</p>
+
+<div class="nav-tabs">
+  <button class="tab-btn active" onclick="showPage('overview', this)">概要</button>
+  <button class="tab-btn" onclick="showPage('rookie', this)">ルーキー</button>
+  <button class="tab-btn" onclick="showPage('active', this)">アクティブ</button>
+  <button class="tab-btn" onclick="showPage('revenue', this)">レベニュー</button>
+  <button class="tab-btn" onclick="showPage('calc', this)">報酬計算</button>
+</div>
+
+<div id="overview" class="page active">
+  <div class="info-box">TikTokライブ配信の報酬制度の説明です。<strong>ルーキーボーナス</strong>・<strong>アクティブタスク</strong>・<strong>レベニューボーナス</strong>の3種類があります。</div>
+  <div class="section-title">基本単位</div>
+  <div class="card">
+    <div class="card-row"><span class="card-label">1コイン（ギフター）</span><span class="card-val">= 1ダイヤ</span></div>
+    <div class="card-row"><span class="card-label">1ダイヤ（換算）</span><span class="card-val">= 0.75円</span></div>
+    <div class="card-row"><span class="card-label">為替レート</span><span class="card-val">¥159.539 / $</span></div>
+  </div>
+  <div class="section-title">ボーナス一覧</div>
+  <div class="card">
+    <div class="card-row"><span class="card-label">ルーキーマイルストーン 0.5</span><span class="card-val accent">¥23,931</span></div>
+    <div class="card-row"><span class="card-label">ルーキーマイルストーン 1</span><span class="card-val accent">¥47,862</span></div>
+    <div class="card-row"><span class="card-label">ルーキーマイルストーン 2</span><span class="card-val accent">¥159,539</span></div>
+    <div class="card-row" style="background:#f5f5f3; margin:0 -1rem; padding:6px 1rem; border-radius:0 0 12px 12px;"><span class="card-label" style="font-weight:500;">合計上限</span><span class="card-val accent" style="font-size:16px;">¥231,332</span></div>
+  </div>
+</div>
+
+<div id="rookie" class="page">
+  <div class="info-box"><strong>対象：</strong>入会から90日以内のクリエイター（ひとりにつき1回のみ）<br><br><strong>最小要件：</strong>毎月7日以上の有効LIVE配信、かつ15時間以上の月間有効LIVE配信時間</div>
+  <div class="section-title">マイルストーン詳細</div>
+  <div class="milestone-card">
+    <div class="milestone-header"><span class="milestone-name">マイルストーン 0.5</span><span class="badge badge-amber">$150</span></div>
+    <div class="milestone-diamonds">75,000個を超えるダイヤモンドを獲得</div>
+    <div class="milestone-amounts">
+      <div class="amount-box"><div class="amount-label">ドル</div><div class="amount-val">$150</div></div>
+      <div class="amount-box"><div class="amount-label">円（エージェンシー）</div><div class="amount-val">¥23,931</div></div>
+    </div>
+  </div>
+  <div class="milestone-card">
+    <div class="milestone-header"><span class="milestone-name">マイルストーン 1</span><span class="badge badge-blue">$300</span></div>
+    <div class="milestone-diamonds">150,000個を超えるダイヤモンドを獲得</div>
+    <div class="milestone-amounts">
+      <div class="amount-box"><div class="amount-label">ドル</div><div class="amount-val">$300</div></div>
+      <div class="amount-box"><div class="amount-label">円（エージェンシー）</div><div class="amount-val">¥47,862</div></div>
+    </div>
+  </div>
+  <div class="milestone-card">
+    <div class="milestone-header"><span class="milestone-name">マイルストーン 2</span><span class="badge badge-red">$1,000</span></div>
+    <div class="milestone-diamonds">500,000個を超えるダイヤモンドを獲得</div>
+    <div class="milestone-amounts">
+      <div class="amount-box"><div class="amount-label">ドル</div><div class="amount-val">$1,000</div></div>
+      <div class="amount-box"><div class="amount-label">円（エージェンシー）</div><div class="amount-val">¥159,539</div></div>
+    </div>
+  </div>
+  <p class="note">※マイルストーンは累積。0.5→1→2の順に達成すると合計¥231,332</p>
+</div>
+
+<div id="active" class="page">
+  <div class="info-box"><strong>対象：</strong>全クリエイター（毎月変動・当月データ換算）<br><br><strong>有効配信日数とは：</strong>1日に1時間の配信時間を超えた日数<br>⚠️ 23時以降の配信は23:59までの配信でカウント（1日として換算されない）</div>
+  <div class="section-title">レベル別獲得条件</div>
+  <div class="lv-selector">
+    <button class="lv-btn active" onclick="showLv(1)">Lv1</button>
+    <button class="lv-btn" onclick="showLv(2)">Lv2</button>
+    <button class="lv-btn" onclick="showLv(3)">Lv3</button>
+    <button class="lv-btn" onclick="showLv(4)">Lv4</button>
+    <button class="lv-btn" onclick="showLv(5)">Lv5</button>
+  </div>
+  <div class="condition-grid">
+    <div class="cond-box"><div class="cond-label">ダイヤ数/月</div><div class="cond-val" id="cond-diamond">150,000以上</div></div>
+    <div class="cond-box"><div class="cond-label">有効配信日数</div><div class="cond-val" id="cond-days">18日以上</div></div>
+    <div class="cond-box"><div class="cond-label">月間LIVE時間</div><div class="cond-val" id="cond-hours">40時間以上</div></div>
+    <div class="cond-box"><div class="cond-label">1ダイヤあたり報酬</div><div class="cond-val" id="cond-rate" style="color:#D85A30;">$0.0002</div></div>
+  </div>
+  <div class="section-title" id="lv-detail-title">Lv1 — 報酬早見表</div>
+  <div class="card" id="lv-table"></div>
+</div>
+
+<div id="revenue" class="page">
+  <div class="info-box"><strong>レベニューボーナス：</strong>前月比のダイヤ数増加率に応じて追加ボーナスが発生します。</div>
+  <div class="section-title">レベル別条件と報酬率</div>
+  <div class="rev-lv-card">
+    <div class="rev-lv-badge" style="background:#EAF3DE; color:#3B6D11;">Lv1</div>
+    <div class="rev-info"><div class="rev-cond">先月比 ≥ 100%</div><div class="rev-rate">報酬ダイヤ × 9%</div></div>
+  </div>
+  <div class="rev-lv-card">
+    <div class="rev-lv-badge" style="background:#E6F1FB; color:#185FA5;">Lv2</div>
+    <div class="rev-info"><div class="rev-cond">先月比 ≥ 110%</div><div class="rev-rate">報酬ダイヤ × 11%</div></div>
+  </div>
+  <div class="rev-lv-card">
+    <div class="rev-lv-badge" style="background:#FAEEDA; color:#854F0B;">Lv3</div>
+    <div class="rev-info"><div class="rev-cond">先月比 ≥ 120%</div><div class="rev-rate">報酬ダイヤ × 13%</div></div>
+  </div>
+  <div class="rev-lv-card">
+    <div class="rev-lv-badge" style="background:#FAECE7; color:#993C1D;">Lv4</div>
+    <div class="rev-info"><div class="rev-cond">先月比 ≥ 130%</div><div class="rev-rate">報酬ダイヤ × 15%</div></div>
+  </div>
+  <div class="section-title">計算例</div>
+  <div class="card">
+    <div class="card-row"><span class="card-label">先月10M → 今月10M (100%)</span><span class="card-val">報酬 0.9M</span></div>
+    <div class="card-row"><span class="card-label">先月10M → 今月11M (110%)</span><span class="card-val accent">報酬 1.2M</span></div>
+    <div class="card-row"><span class="card-label">先月10M → 今月12M (120%)</span><span class="card-val accent">報酬 1.6M</span></div>
+    <div class="card-row"><span class="card-label">先月10M → 今月13M (130%)</span><span class="card-val accent">報酬 2.0M</span></div>
+  </div>
+</div>
+
+<div id="calc" class="page">
+  <div class="info-box">獲得ダイヤ数を入力すると、各レベルでの報酬を計算します。</div>
+  <div class="section-title">ダイヤ数を入力</div>
+  <div class="diamond-input">
+    <input type="number" id="diamond-input" placeholder="例: 500000" oninput="calcReward()" />
+    <span style="font-size:13px; color:#888;">ダイヤ</span>
+  </div>
+  <div id="calc-result" style="display:none;">
+    <div class="section-title">レベル別報酬</div>
+    <div id="calc-cards"></div>
+    <p class="note">※ 報酬はエージェンシー受取額。為替レート $1=¥159.539 で計算。</p>
+  </div>
+</div>
+
+</div>
+
+<script>
+const lvData = {
+  1: { days: '18日以上', hours: '40時間以上', rate: '$0.0002', rateNum: 0.0002 },
+  2: { days: '20日以上', hours: '80時間以上', rate: '$0.0003', rateNum: 0.0003 },
+  3: { days: '20日以上', hours: '100時間以上', rate: '$0.0004', rateNum: 0.0004 },
+  4: { days: '22日以上', hours: '120時間以上', rate: '$0.0005', rateNum: 0.0005 },
+  5: { days: '24日以上', hours: '140時間以上', rate: '$0.0006', rateNum: 0.0006 }
+};
+const tableRows = [150000,200000,300000,400000,500000,600000,700000,800000,900000,1000000,1500000,2000000,2500000,3000000];
+const FX = 159.539;
+
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+function showLv(lv) {
+  document.querySelectorAll('.lv-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lv-btn')[lv-1].classList.add('active');
+  const d = lvData[lv];
+  document.getElementById('cond-diamond').textContent = '150,000以上';
+  document.getElementById('cond-days').textContent = d.days;
+  document.getElementById('cond-hours').textContent = d.hours;
+  document.getElementById('cond-rate').textContent = d.rate;
+  document.getElementById('lv-detail-title').textContent = 'Lv'+lv+' — 報酬早見表';
+  const tbl = document.getElementById('lv-table');
+  tbl.innerHTML = tableRows.map(diamonds => {
+    const usd = (diamonds * d.rateNum).toFixed(1);
+    const jpy = Math.round(diamonds * d.rateNum * FX).toLocaleString();
+    return `<div class="card-row"><span class="card-label">${(diamonds/10000).toFixed(0)}万ダイヤ</span><span class="card-val">$${usd} / <span style="color:#D85A30;">¥${jpy}</span></span></div>`;
+  }).join('');
+}
+
+function calcReward() {
+  const val = parseInt(document.getElementById('diamond-input').value) || 0;
+  const res = document.getElementById('calc-result');
+  const cards = document.getElementById('calc-cards');
+  if (val < 1000) { res.style.display = 'none'; return; }
+  res.style.display = 'block';
+  cards.innerHTML = [1,2,3,4,5].map(lv => {
+    const d = lvData[lv];
+    const usd = (val * d.rateNum).toFixed(2);
+    const jpy = Math.round(val * d.rateNum * FX).toLocaleString();
+    const colors = ['#EAF3DE','#E6F1FB','#FAEEDA','#FAECE7','#EEEDFE'];
+    const tcolors = ['#3B6D11','#185FA5','#854F0B','#993C1D','#534AB7'];
+    return `<div style="border-left:3px solid ${tcolors[lv-1]}; background:#f5f5f3; border-radius:8px; margin-bottom:0.5rem; padding:0.75rem 1rem;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="background:${colors[lv-1]};color:${tcolors[lv-1]};font-size:12px;font-weight:500;padding:2px 8px;border-radius:999px;">Lv${lv}</span>
+        <span style="font-size:11px;color:#888;">${d.days} / ${d.hours}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="font-size:13px;color:#888;">$${usd}</span>
+        <span class="result-big">¥${jpy}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+showLv(1);
+</script>
+</body>
+</html>
